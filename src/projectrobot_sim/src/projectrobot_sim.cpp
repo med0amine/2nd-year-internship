@@ -1,18 +1,18 @@
 #include <projectrobot_sim.h>
 
-Projectrobot3Sim::Projectrobot3Sim()
+ProjectrobotSim::ProjectrobotSim()
 : nh_priv_("~")
 {
   bool init_result = init();
   ROS_ASSERT(init_result);
 }
 
-//Projectrobot3Sim: ~Projectrobot3Sim()
-//{
-//}
+ProjectrobotSim: ~ProjectrobotSim()
+{
+}
 
 
-bool Projectrobot3Sim::init()
+bool ProjectrobotSim::init()
 {
   wheel_seperation_ = 0;
   turning_radius_   = 0;
@@ -61,7 +61,7 @@ bool Projectrobot3Sim::init()
   joint_states_pub_ = nh_.advertise<sensor_msgs::JointState>("joint_states", 100);
   odom_pub_         = nh_.advertise<nav_msgs::Odometry>("odom", 100);
 
-  cmd_vel_sub_  = nh_.subscribe("cmd_vel", 100,  &Projectrobot3Sim::commandVelocityCallback, this);
+  cmd_vel_sub_  = nh_.subscribe("cmd_vel", 100,  &ProjectrobotSim::commandVelocityCallback, this);
 
   prev_update_time_ = ros::Time::now();
 
@@ -69,7 +69,7 @@ bool Projectrobot3Sim::init()
 }
 
 
-void Projectrobot3Sim::commandVelocityCallback(const geometry_msgs::TwistConstPtr cmd_vel_msg)
+void ProjectrobotSim::commandVelocityCallback(const geometry_msgs::TwistConstPtr cmd_vel_msg)
 {
   last_cmd_vel_time_ = ros::Time::now();
 
@@ -81,7 +81,7 @@ void Projectrobot3Sim::commandVelocityCallback(const geometry_msgs::TwistConstPt
 }
 
 
-bool Projectrobot3Sim::updateOdometry(ros::Duration diff_time)
+bool ProjectrobotSim::updateOdometry(ros::Duration diff_time)
 {
   double wheel_l, wheel_r; 
   double delta_s, delta_theta;
@@ -137,7 +137,7 @@ bool Projectrobot3Sim::updateOdometry(ros::Duration diff_time)
 }
 
 
-void Projectrobot3Sim::updateJoint(void)
+void ProjectrobotSim::updateJoint(void)
 {
   joint_states_.position[LEFT]  = last_position_[LEFT];
   joint_states_.position[RIGHT] = last_position_[RIGHT];
@@ -145,7 +145,7 @@ void Projectrobot3Sim::updateJoint(void)
   joint_states_.velocity[RIGHT] = last_velocity_[RIGHT];
 }
 
-void Projectrobot3Sim::updateTF(geometry_msgs::TransformStamped& odom_tf)
+void ProjectrobotSim::updateTF(geometry_msgs::TransformStamped& odom_tf)
 {
   odom_tf.header = odom_.header;
   odom_tf.child_frame_id = odom_.child_frame_id;
@@ -155,7 +155,7 @@ void Projectrobot3Sim::updateTF(geometry_msgs::TransformStamped& odom_tf)
   odom_tf.transform.rotation = odom_.pose.pose.orientation;
 }
 
-bool Projectrobot3Sim::update()
+bool ProjectrobotSim::update()
 {
   ros::Time time_now = ros::Time::now();
   ros::Duration step_time = time_now - prev_update_time_;
