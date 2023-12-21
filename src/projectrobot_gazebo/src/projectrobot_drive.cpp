@@ -1,20 +1,20 @@
 #include "projectrobot_drive.h"
 
-Projectrobot3Drive::Projectrobot3Drive()
+ProjectrobotDrive::ProjectrobotDrive()
   : nh_priv_("~")
 {
   auto ret = init();
   ROS_ASSERT(ret);
 }
 
-//Projectrobot3Drive::~Projectrobot3Drive()
-//{
-//  updatecommandVelocity(0.0, 0.0);
-//  ros::shutdown();
-//}
+ProjectrobotDrive::~ProjectrobotDrive()
+{
+  updatecommandVelocity(0.0, 0.0);
+  ros::shutdown();
+}
 
 
-bool Projectrobot3Drive::init()
+bool ProjectrobotDrive::init()
 {
   std::string cmd_vel_topic_name = nh_.param<std::string>("cmd_vel_topic_name", "");
 
@@ -27,13 +27,13 @@ bool Projectrobot3Drive::init()
 
   cmd_vel_pub_   = nh_.advertise<geometry_msgs::Twist>(cmd_vel_topic_name, 10);
 
-  laser_scan_sub_  = nh_.subscribe("scan", 10, &Projectrobot3Drive::laserScanMsgCallBack, this);
-  odom_sub_ = nh_.subscribe("odom", 10, &Projectrobot3Drive::odomMsgCallBack, this);
+  laser_scan_sub_  = nh_.subscribe("scan", 10, &ProjectrobotDrive::laserScanMsgCallBack, this);
+  odom_sub_ = nh_.subscribe("odom", 10, &ProjectrobotDrive::odomMsgCallBack, this);
 
   return true;
 }
 
-void Projectrobot3Drive::odomMsgCallBack(const nav_msgs::Odometry::ConstPtr &msg)
+void ProjectrobotDrive::odomMsgCallBack(const nav_msgs::Odometry::ConstPtr &msg)
 {
   double siny = 2.0 * (msg->pose.pose.orientation.w * msg->pose.pose.orientation.z + msg->pose.pose.orientation.x * msg->pose.pose.orientation.y);
 	double cosy = 1.0 - 2.0 * (msg->pose.pose.orientation.y * msg->pose.pose.orientation.y + msg->pose.pose.orientation.z * msg->pose.pose.orientation.z);  
@@ -41,7 +41,7 @@ void Projectrobot3Drive::odomMsgCallBack(const nav_msgs::Odometry::ConstPtr &msg
 	tb3_pose_ = atan2(siny, cosy);
 }
 
-void Projectrobot3Drive::laserScanMsgCallBack(const sensor_msgs::LaserScan::ConstPtr &msg)
+void ProjectrobotDrive::laserScanMsgCallBack(const sensor_msgs::LaserScan::ConstPtr &msg)
 {
   uint16_t scan_angle[4] = {0, 40, 350};
 
@@ -58,7 +58,7 @@ void Projectrobot3Drive::laserScanMsgCallBack(const sensor_msgs::LaserScan::Cons
   }
 }
 
-void Projectrobot3Drive::updatecommandVelocity(double linear, double angular)
+void ProjectrobotDrive::updatecommandVelocity(double linear, double angular)
 {
   geometry_msgs::Twist cmd_vel;
 
@@ -68,7 +68,7 @@ void Projectrobot3Drive::updatecommandVelocity(double linear, double angular)
   cmd_vel_pub_.publish(cmd_vel);
 }
 
-bool Projectrobot3Drive::controlLoop()
+bool ProjectrobotDrive::controlLoop()
 {
   static uint8_t robot_state_num = 0;
 
@@ -130,7 +130,7 @@ bool Projectrobot3Drive::controlLoop()
 int main(int argc, char* argv[])
 {
   ros::init(argc, argv, "turtlebot3_drive");
-  Projectrobot3Drive projectrobot_drive;
+  ProjectrobotDrive projectrobot_drive;
 
   ros::Rate loop_rate(150);
 
