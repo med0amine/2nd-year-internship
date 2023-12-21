@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/Projectrobot_ws/install
+
+Name: projectrobot_teleop
+Description: Description of projectrobot_teleop
+Version: 1.3.2
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: rospy geometry_msgs

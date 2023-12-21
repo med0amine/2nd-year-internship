@@ -1,0 +1,2 @@
+projectrobot:projectrobot_gazebo:projectrobot_navigation:projectrobot_sim:projectrobot_slam:projectrobot_teleop
+-DCATKIN_DEVEL_PREFIX=/home/ubuntu/Projectrobot_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ubuntu/Projectrobot_ws/install -G Unix Makefiles

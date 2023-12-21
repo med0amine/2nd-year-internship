@@ -1,0 +1,9 @@
+<launch>
+  <arg name="projectrobot"/>
+
+  <include file="$(find projectrobot_sim)/launch/projectrobot_sim.launch">
+    <arg name="model" value="$(arg model)"/>
+  </include>
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find projectrobot_gazebo)/rviz/projectrobot_gazebo_model.rviz"/>
+</launch>

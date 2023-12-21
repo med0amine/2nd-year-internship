@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>projectrobot_gazebo</name>
+  <version>1.3.2</version>
+  <description>
+    Gazebo simulation package for the robot
+  </description>
+  <license>
+    BSD
+  </license>
+  <maintainer email="mouhamed.amin.ben.ammar@gmail.com">
+    Mohamed Amine Ben Ammar
+  </maintainer>
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>roscpp</depend>
+  <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>nav_msgs</depend>
+  <depend>tf</depend>
+  <depend>gazebo_ros</depend>
+  <exec_depend>gazebo</exec_depend>
+</package>

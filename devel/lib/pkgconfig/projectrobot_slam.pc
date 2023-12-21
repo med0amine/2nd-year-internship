@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/Projectrobot_ws/devel
+
+Name: projectrobot_slam
+Description: Description of projectrobot_slam
+Version: 1.3.2
+Cflags: -I/home/ubuntu/Projectrobot_ws/src/projectrobot_slam/include
+Libs: -L${prefix}/lib 
+Requires: roscpp sensor_msgs

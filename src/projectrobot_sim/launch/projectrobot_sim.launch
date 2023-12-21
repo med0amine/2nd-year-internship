@@ -1,0 +1,17 @@
+<launch>
+  <arg name="projectrobot"/>
+
+  <param name="tb3_model" value="$(arg name)"/>
+
+  <include file="$(find projectrobot_sim)/launch/projectrobot_sim.launch">
+    <arg name="model" value="$(arg model)" />
+  </include>
+
+  <node pkg="projecttobot_sim" type="projectrobot_sim_node" name="projectrobot_sim_node" output="screen" />
+
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen">
+    <param name="publish_frequency" type="double" value="60.0" />
+  </node>
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find robotproject_sim)/rviz/robotproject_sim.rviz"/>
+</launch>

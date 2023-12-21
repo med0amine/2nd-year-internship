@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/Projectrobot_ws/install
+
+Name: projectrobot_navigation
+Description: Description of projectrobot_navigation
+Version: 1.3.2
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>projectrobot</name>
+  <version>1.3.2</version>
+  <description>
+    ROS meta packages for the projectrobot
+  </description>
+  <license>
+    BSD
+  </license>
+  <maintainer email="mouhamed.amin.ben.ammar@gmail.com">
+    Mohamed Amine Ben Ammar
+  </maintainer>
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>projectrobot_navigation</exec_depend>
+  <exec_depend>projectrobot_slam</exec_depend>
+  <exec_depend>projectrobot_teleop</exec_depend>
+  <exec_depend>projectrobot_sim</exec_depend>
+  <exec_depend>projectrobot_gazebo</exec_depend>
+  <export><metapackage/></export>
+</package>
