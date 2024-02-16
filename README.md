@@ -1,4 +1,7 @@
-This internship aims to implement the Enova Robotics test robot with autonomous navigation, programmed in Python, C/C++ and XML, using MakeFile and Cmake compilers in ROS Noetic and Ubuntu Linux. 
+This internship aims to implement the Enova Robotics test robot with autonomous navigation, programmed in Python, C/C++ and XML, using MakeFile and Cmake compilers in ROS Noetic and Ubuntu Linux.
+
+This System was developed using Lidar technology to detect nearby obstacles in the environment and create a map of the surroundings. I was using ROS (Robotic Operating System) and specific algorithms to automate the robot navigation.
+
 The system works in 3 main steps:
 
 1. setting up the environment:
